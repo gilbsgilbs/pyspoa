@@ -38,7 +38,8 @@ ls /opt/python/
 # Compile wheels
 for minor in $@; do
     if [[ "${minor}" == "8" ]] || [[ "${minor}" == "9" ]] || \
-        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]]; then
+        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]] || \
+	[[ "${minor}" == "12" ]] ; then
         PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
     else
         PYBIN="/opt/python/cp3${minor}-cp3${minor}m/bin"
@@ -59,7 +60,8 @@ done
 # Install + test packages
 for minor in $@; do
     if [[ "${minor}" == "8" ]] || [[ "${minor}" == "9" ]] || \
-        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]]; then
+        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]] || \
+	[[ "${minor}" == "12" ]] ; then
         PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
     else
         PYBIN="/opt/python/cp3${minor}-cp3${minor}m/bin"

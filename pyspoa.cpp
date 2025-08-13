@@ -11,7 +11,7 @@ auto poa(std::vector<std::string> sequences, int algorithm, bool genmsa,
 {
     // set min_coverage to the default of the SPOA CLI (-1) if None
     int min_cov = -1;
-    if (min_coverage != pybind11::none()) {
+    if (!min_coverage.is(pybind11::none())) {
         min_cov = min_coverage.cast<int>();
     }
     auto alignment_engine = spoa::AlignmentEngine::Create(
