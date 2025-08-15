@@ -139,7 +139,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='pyspoa',
-    version='0.3.0',
+    version='0.3.1',
     author='Oxford Nanoporetech Technologies, Ltd.',
     author_email='support@nanoporetech.com',
     url='https://github.com/nanoporetech/pyspoa',
