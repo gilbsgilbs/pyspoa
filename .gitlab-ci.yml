@@ -40,6 +40,7 @@ test:
         - make test
 
 
+
 deploy-checks:
     stage: prerelease
     variables:
@@ -68,6 +69,19 @@ conda:
         - *prep-image
         - *conda-before-script
 
+test-conda-build:
+    extends:
+        - .deploy-conda-linux
+    stage: prerelease 
+    variables:
+        RECIPEPATH: "../conda"
+        UPLOAD: "no"
+    before_script:
+        - *prep-image
+        - *conda-before-script
+    rules:
+        - when: always
+
 conda-arm:
     extends:
         - .deploy-conda-linux-arm
@@ -77,6 +91,19 @@ conda-arm:
         - *prep-image
         - *conda-before-script
 
+test-conda-arm-build:
+    extends:
+        - .deploy-conda-linux-arm
+    stage: prerelease 
+    variables:
+        RECIPEPATH: "../conda"
+        UPLOAD: "no"
+    before_script:
+        - *prep-image
+        - *conda-before-script
+    rules:
+        - when: always
+
 conda-mac:
     extends:
         - .deploy-conda-mac
@@ -84,6 +111,18 @@ conda-mac:
         RECIPEPATH: "../conda"
     before_script:
         - *conda-before-script
+
+test-conda-mac-build:
+    extends:
+        - .deploy-conda-mac
+    stage: prerelease 
+    variables:
+        RECIPEPATH: "../conda"
+        UPLOAD: "no"
+    before_script:
+        - *conda-before-script
+    rules:
+        - when: always
 
 conda-mac-arm:
     extends:
@@ -93,6 +132,17 @@ conda-mac-arm:
     before_script:
         - *conda-before-script
 
+test-conda-mac-arm-build:
+    extends:
+        - .deploy-conda-mac-arm
+    stage: prerelease 
+    variables:
+        RECIPEPATH: "../conda"
+        UPLOAD: "no"
+    before_script:
+        - *conda-before-script
+    rules:
+        - when: always
 
 ### Python
 # The selection of wheels built here is mainly driven by the matrix

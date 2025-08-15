@@ -14,7 +14,7 @@ requirements:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - make
-        - cmake
+        - cmake <4
     host:
         - python
         - pip
