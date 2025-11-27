@@ -19,7 +19,7 @@ test: install
 	${IN_VENV} && python tests/test_pyspoa.py
 
 sdist: venv/bin/activate
-	${IN_VENV} && python setup.py sdist
+	${IN_VENV} && pip install setuptools && python setup.py sdist
 
 IN_BUILD=. ./pypi_build/bin/activate
 pypi_build/bin/activate:
