@@ -37,13 +37,7 @@ ls /opt/python/
 
 # Compile wheels
 for minor in $@; do
-    if [[ "${minor}" == "8" ]] || [[ "${minor}" == "9" ]] || \
-        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]] || \
-	[[ "${minor}" == "12" ]] ; then
-        PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
-    else
-        PYBIN="/opt/python/cp3${minor}-cp3${minor}m/bin"
-    fi
+    PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
     "${PYBIN}/python3" -m pip install --upgrade pip
     "${PYBIN}/python3" -m pip install cmake==3.27.1 scikit-build
     "${PYBIN}"/pip wheel --no-dependencies . -w ./wheelhouse/
@@ -59,13 +53,7 @@ done
 
 # Install + test packages
 for minor in $@; do
-    if [[ "${minor}" == "8" ]] || [[ "${minor}" == "9" ]] || \
-        [[ "${minor}" == "10" ]] || [[ "${minor}" == "11" ]] || \
-	[[ "${minor}" == "12" ]] ; then
-        PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
-    else
-        PYBIN="/opt/python/cp3${minor}-cp3${minor}m/bin"
-    fi
+    PYBIN="/opt/python/cp3${minor}-cp3${minor}/bin"
     "${PYBIN}"/pip install "${PACKAGE_NAME}" --no-index -f ./wheelhouse
     "${PYBIN}"/python3 tests/test_pyspoa.py
 done
